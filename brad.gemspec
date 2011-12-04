@@ -1,11 +1,13 @@
-# Provide a simple gemspec so you can easily use your enginex
-# project in your rails apps through git.
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path("../lib", __FILE__)
+require "brad/version"
+
 Gem::Specification.new do |s|
-  s.name = "bootstrad"
-  s.summary = "Insert Bootstrad summary."
-  s.description = "Insert Bootstrad description."
+  s.name = "brad"
+  s.summary = "Insert Brad summary."
+  s.description = "Insert Brad description."
   s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
-  s.version = "0.0.1"
+  s.version = Brad::VERSION
 
   s.add_development_dependency 'rspec-mocks', '~> 2.7.0'
   s.add_development_dependency 'rspec-rails', '~> 2.7.0'
@@ -16,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'yard'
 
   s.add_dependency 'actionpack', '~> 3.1.1'
-  s.add_dependency 'mongoid', '~> 2.3.3'
-  s.add_dependency 'bson_ext', '~> 1.4.0'
   s.add_dependency 'kaminari', '~> 0.12.4'
+  s.add_dependency 'bootstrap-sass', '~> 1.4.0'
+  s.add_dependency 'inherited_resources', '~> 1.3.0'
 end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Bootstrad do
+describe Brad do
   it "should be valid" do
-    Bootstrad.should be_a(Module)
+    Brad.should be_a(Module)
   end
 end

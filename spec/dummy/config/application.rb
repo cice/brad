@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require "active_model/railtie"
-require "active_record/railtie"
 require "action_controller/railtie"
 require "action_view/railtie"
 require "action_mailer/railtie"
@@ -12,7 +11,7 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
   
-  require "bootstrad"
+  require "brad"
 end
 
 module Dummy
