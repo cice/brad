@@ -6,4 +6,10 @@ describe Brad::Resources::Controller do
     
     it { should be_a Module }
   end
+  
+  describe 'a decorated controller' do
+    subject { TestResourcesController }
+    
+    its(:included_modules) { should include InheritedResources::Actions }
+  end
 end

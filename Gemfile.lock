@@ -176,6 +176,7 @@ DEPENDENCIES
   capybara (>= 0.4.0)
   database_cleaner
   fabrication
+  inherited_resources
   mongoid
   rails (~> 3.1.1)
   rspec-mocks (~> 2.7.0)

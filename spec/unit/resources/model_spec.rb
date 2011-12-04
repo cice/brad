@@ -8,11 +8,7 @@ describe Brad::Resources::Model do
   end
   
   describe 'a decorated model' do
-    class SomeModel
-      include Brad::Resources::Model
-    end
-    
-    subject { SomeModel }
+    subject { TestResource }
     
     its(:included_modules){ should include Mongoid::Document }
   end
