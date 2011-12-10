@@ -1,3 +1,3 @@
 BradSample::Application.routes.draw do
-  routes :users
+  resources :users
 end

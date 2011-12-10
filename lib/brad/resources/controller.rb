@@ -5,5 +5,6 @@ module Brad::Resources::Controller
   
   included do
     inherit_resources
+    helper Brad::Resources::View
   end
 end

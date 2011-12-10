@@ -10,6 +10,6 @@ describe Brad::Resources::Controller do
   describe 'a decorated controller' do
     subject { TestResourcesController }
     
-    its(:included_modules) { should include InheritedResources::Actions }
+    its(:included_modules) { should include InheritedResources::Actions } # and a lot of other InheritedResources Modules
   end
 end
