@@ -140,10 +140,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   brad!
   bson_ext
   coffee-rails (~> 3.1.1)
   haml-rails
+  inherited_resources
   jquery-rails
   mongoid
   rails (= 3.1.3)
