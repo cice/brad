@@ -35,30 +35,10 @@ module Brad::Resources::View::FormBuilders
       partial partial_name, locals do
         block[options]
       end
-      
-      # content_div :class => "clearfix #{state}" do
-      #   concat label(method)
-      #   
-      #   with_class state do
-      #     if prepend
-      #       concat content_div(:class => 'input') {
-      #         concat content_div(:class => 'input-prepend') {
-      #           concat content_span(prepend, :class => 'add-on')
-      #           concat @template.capture(&block)
-      #         }
-      #       }
-      #     else
-      #       concat content_div(:class => 'input', &block)
-      #     end
-      #   end
-      # end
     end
     
     def fieldset legend, &block
-      content_tag :fieldset do
-        concat content_tag(:legend, legend)
-        concat @template.capture(&block)
-      end
+      partial 'fieldset', :legend => legend, &block
     end
     
     def typed_btn value = nil, type = nil, options = {}
@@ -103,18 +83,6 @@ module Brad::Resources::View::FormBuilders
     
     def render *args, &block
       @template.render *args, &block
-    end
-    
-    def content_tag *args, &block
-      @template.content_tag *args, &block
-    end
-    
-    def content_div *args, &block
-      content_tag :div, *args, &block
-    end
-    
-    def content_span *args, &block
-      content_tag :span, *args, &block
     end
     
     def concat buffer
