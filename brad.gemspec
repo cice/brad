@@ -4,8 +4,9 @@ require "brad/version"
 
 Gem::Specification.new do |s|
   s.name = "brad"
-  s.summary = "Insert Brad summary."
-  s.description = "Insert Brad description."
+  s.summary = "Bootstrap based RAD Framework for Rails 3.1"
+  s.description = "Bootstrap based RAD Framework for Rails 3.1"
+  s.authors     = ["Marian Theisen"]
   s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
   s.version = Brad::VERSION
 
