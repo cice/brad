@@ -6,5 +6,7 @@ module Brad::Resources::Controller
   included do
     inherit_resources
     helper Brad::Resources::View
+    
+    prepend_view_path 'app/views/brad_resources'
   end
 end

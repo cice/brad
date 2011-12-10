@@ -37,6 +37,26 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
     it { should have_selector 'fieldset .clearfix .input input'}
   end
   
+  describe 'prepended inputs' do
+    subject do
+      helper.form_for TestResource.new do |f|
+        concat f.text_field(:test_field_b, :prepend => 'foo?')
+      end
+    end
+    
+    it { should have_selector('.clearfix .input .input-prepend span.add-on', :content => 'foo?')}
+  end
+  
+  describe 'appended inputs' do
+    subject do
+      helper.form_for TestResource.new do |f|
+        concat f.text_field(:test_field_b, :append => 'foo?')
+      end
+    end
+    
+    it { should have_selector('.clearfix .input .input-append span.add-on', :content => 'foo?')}
+  end
+  
   describe '#primary_btn' do
     subject do
       helper.form_for TestResource.new do |f|

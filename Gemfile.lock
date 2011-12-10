@@ -66,6 +66,12 @@ GEM
     erubis (2.7.0)
     fabrication (1.2.0)
     ffi (1.0.9)
+    haml (3.1.4)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     has_scope (0.5.1)
     hike (1.2.1)
     i18n (0.6.0)
@@ -187,6 +193,7 @@ DEPENDENCIES
   capybara (>= 0.4.0)
   database_cleaner
   fabrication
+  haml-rails
   inherited_resources
   mongoid
   rails (~> 3.1.1)

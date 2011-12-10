@@ -1,7 +1,8 @@
 = form_for @user do |f|
   = f.fieldset "Benutzer" do
-    = f.text_field :firstname, :state => :error
-    = f.text_field :lastname, :state => :success
+    - f.with_class :xxlarge do
+      = f.text_field :firstname, :state => :error, :append => '@bla.com' 
+      = f.text_field :lastname, :state => :success
     
   .actions
     = f.primary_btn 'Speichern'

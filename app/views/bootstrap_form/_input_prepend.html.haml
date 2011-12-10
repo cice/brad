@@ -1,0 +1,9 @@
+.clearfix{:class => state}
+  = builder.label method
+  
+  .input
+    .input-prepend
+      %span.add-on
+        = prepend
+        
+      = yield
