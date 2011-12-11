@@ -1,8 +1,9 @@
 module Brad::Resources::View::FormBuilders
   class Bootstrap < Base
-    (field_helpers - %w(label fields_for hidden_field radio_box check_box)).each do |field_name|
+    (field_helpers - %w(label fields_for hidden_field)).each do |field_helper|
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
-        def #{field_name} method, options = {}
+        alias_method "plain_#{field_helper}", "#{field_helper}"
+        def #{field_helper} method, options = {}
           bootstrap_field_layout method, options do |input_options|
             concat super(method, input_options)
           end

@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Brad::Resources::View::FormHelpers, :type => :helper do
+  describe 'plain inputs' do
+    subject do
+      helper.form_for TestResource.new do |f|
+        concat f.plain_text_field :test_field_a
+      end
+    end
+    
+    it { should_not have_selector '.clearfix .input input#test_resource_test_field_a'}
+    it { should have_selector 'input#test_resource_test_field_a' }
+  end
+  
   describe 'simple text field' do
     subject do
       helper.form_for TestResource.new do |f|
@@ -55,6 +66,16 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
     end
     
     it { should have_selector('.clearfix .input .input-append span.add-on', :content => 'foo?')}
+  end
+  
+  describe 'input prepended with checkbox' do
+    subject do
+      helper.form_for TestResource.new do |f|
+        concat f.text_field(:test_field_b, :prepend => f.plain_check_box(:test_field_d))
+      end
+    end
+    
+    it { should have_selector('.clearfix .input .input-prepend span.add-on input[type="checkbox"]')}
   end
   
   describe '#primary_btn' do

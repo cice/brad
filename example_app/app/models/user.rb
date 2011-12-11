@@ -7,4 +7,6 @@ class User
   field :date_of_birth, type: Date
   field :location,      type: String
   field :occupation,    type: String
+  field :active,        type: Boolean
+  
 end
