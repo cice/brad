@@ -33,13 +33,13 @@ module Brad::Resources::View::FormBuilders
         'input'
       end
       
-      partial partial_name, locals do
+      render_partial partial_name, locals do
         block[options]
       end
     end
     
     def fieldset legend, &block
-      partial 'fieldset', :legend => legend, &block
+      render_partial 'fieldset', :legend => legend, &block
     end
     
     def typed_btn value = nil, type = nil, options = {}
@@ -72,7 +72,7 @@ module Brad::Resources::View::FormBuilders
     end
     
     protected
-    def partial partial, locals = {}, &block
+    def render_partial partial, locals = {}, &block
       partial = "bootstrap_form/#{partial}"
 
       if block_given?
