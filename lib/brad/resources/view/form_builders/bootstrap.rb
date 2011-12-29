@@ -72,22 +72,8 @@ module Brad::Resources::View::FormBuilders
     end
     
     protected
-    def render_partial partial, locals = {}, &block
-      partial = "bootstrap_form/#{partial}"
-
-      if block_given?
-        render :layout => partial, :locals => locals, &block
-      else
-        render :partial => partial, :locals => locals
-      end
-    end
-    
-    def render *args, &block
-      @template.render *args, &block
-    end
-    
-    def concat buffer
-      @template.concat buffer
+    def partial_prefix
+      "bootstrap/#{super}"
     end
     
     def apply_global_options options
