@@ -53,11 +53,11 @@ module Brad::Resources::View::TableBuilders
     end
     
     def render_cell column, object
-      value = column.retrieve_value_from object
+      value = column.render_value object, template
       
       locals = {
         :value => value,
-        :key => column.key
+        :cell_class => column.cell_class
       }
       
       render_partial 'cell', locals

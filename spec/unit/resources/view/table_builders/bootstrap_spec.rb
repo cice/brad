@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Brad::Resources::View::TableHelpers, :type => :helper do
   let(:test_resources) do
     3.times.map { |i|
-      TestResource.new :test_field_a => (i + 1).ordinalize
+      TestResource.create :test_field_a => (i + 1).ordinalize, :test_int => i
     }
   end
   
@@ -22,6 +22,7 @@ describe Brad::Resources::View::TableHelpers, :type => :helper do
   describe 'a simple table' do
     it { should have_selector 'table.test_resources thead' }
     it { should have_selector 'table.test_resources tbody' }
+    it { should have_selector "table.test_resources tbody tr.test_resource[data-id='#{test_resources.first.id}']"}
   end
   
   describe 'provide an id' do
@@ -37,8 +38,54 @@ describe Brad::Resources::View::TableHelpers, :type => :helper do
       end
     end
     
-    it { should have_selector('tbody tr.test_resource td.test_field_a', :content => '1st') }
-    it { should have_selector('tbody tr.test_resource td.test_field_a', :content => '2nd') }
-    it { should have_selector('tbody tr.test_resource td.test_field_a', :content => '3rd') }
+    it { should have_selector('tbody tr.test_resource td.test_field_a.alpha-numeric', :content => '1st') }
+    it { should have_selector('tbody tr.test_resource td.test_field_a.alpha-numeric', :content => '2nd') }
+    it { should have_selector('tbody tr.test_resource td.test_field_a.alpha-numeric', :content => '3rd') }
+  end
+  
+  describe 'numeric columns' do
+    let(:block) do
+      proc do |t|
+        t.numeric :test_int
+      end
+    end
+    
+    it { should have_selector('tbody tr.test_resource td.test_int.numeric', :content => '0') }
+    it { should have_selector('tbody tr.test_resource td.test_int.numeric', :content => '1') }
+    it { should have_selector('tbody tr.test_resource td.test_int.numeric', :content => '2') }
+  end
+  
+  describe 'helper columns' do
+    let(:test_resources) do
+      [ TestResource.create(:test_field_a => 'Once upon a time in a world far far away', :test_int => 1) ]
+    end
+    
+    let(:block) do
+      proc do |t|
+        t.truncate :test_field_a
+      end
+    end
+    
+    it { should have_selector('td.test_field_a.alpha-numeric', :content => 'Once upon a time in a world...')}
+    
+    describe 'helper options' do
+      let(:block) do
+        proc do |t|
+          t.truncate :test_field_a, :helper => { :length => 17 }
+        end
+      end
+      
+      it { should have_selector('td.test_field_a.alpha-numeric', :content => 'Once upon a ti...')}
+    end
+    
+    describe 'numeric helpers' do
+      let(:block) do
+        proc do |t|
+          t.number_with_precision :test_int
+        end
+      end
+      
+      it { should have_selector('td.test_int.numeric', :content => '1.000')}
+    end
   end
 end
