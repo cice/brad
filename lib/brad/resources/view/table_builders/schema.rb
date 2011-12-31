@@ -18,37 +18,39 @@ module Brad::Resources::View::TableBuilders
       @columns
     end
     
-    def string key, options = {}
-      new_column key, options, :class => ALPHA_NUMERIC
+    def string *keys_and_options
+      new_column keys_and_options, :class => ALPHA_NUMERIC
       
       nil
     end
     
-    def numeric key, options = {}
-      new_column key, options, :class => NUMERIC
-      
-      nil
-    end
-    
-    def helper key, name, options = {}
-      klass = numeric_helper?(name) ? NUMERIC : ALPHA_NUMERIC
-      new_column key, options, :class => klass, :helper_name => name
+    def numeric *keys_and_options
+      new_column keys_and_options, :class => NUMERIC
       
       nil
     end
     
     protected
+    def helper name, *keys_and_options
+      klass = numeric_helper?(name) ? NUMERIC : ALPHA_NUMERIC
+      new_column keys_and_options, :class => klass, :helper_name => name
+      
+      nil
+    end
+    
     def numeric_helper? name
       NUMERIC_HELPERS.include? name.to_sym
     end
     
-    def new_column key, options, additional_options = {}
-      @columns << Column.new(key, additional_options.merge!(options))
+    def new_column keys_and_options, additional_options = {}
+      keys = keys_and_options
+      options = keys_and_options.extract_options!
+      
+      @columns << Column.new(keys, additional_options.merge!(options))
     end
     
-    def method_missing name, key, *args, &block
-      options = args.extract_options!
-      helper key, name, options
+    def method_missing name, *keys_and_options, &block
+      helper name, *keys_and_options
     end
   end
 end

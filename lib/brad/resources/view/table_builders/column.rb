@@ -1,10 +1,14 @@
 module Brad::Resources::View::TableBuilders
   class Column
-    attr_reader :key, :options
+    attr_reader :keys, :options
     
-    def initialize key, options = {}
-      @key = key
+    def initialize keys, options = {}
+      @keys = keys
       @options = options
+    end
+    
+    def key
+      keys.first
     end
     
     def cell_class
@@ -36,7 +40,9 @@ module Brad::Resources::View::TableBuilders
     end
     
     def retrieve_value_from object
-      object.send key
+      keys.inject object do |memo, key|
+        memo.try key
+      end
     end
   end
 end
