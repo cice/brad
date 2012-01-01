@@ -24,4 +24,12 @@ describe Brad::Resources::View::LayoutHelpers::Sections, :type => :helper do
     
     buffer.should have_selector('section div.page-header h1 small', :content => 'foobar')
   end
+  
+  it 'should pass options to content_tag' do
+    buffer = helper.section :id => 'foo', :class => 'bar' do
+      concat content_tag(:div, "foobar")
+    end
+    
+    buffer.should have_selector("section div", :content => 'foobar')
+  end
 end
