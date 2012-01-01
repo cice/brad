@@ -8,5 +8,5 @@ class User
   field :location,      type: String
   field :occupation,    type: String
   field :active,        type: Boolean
-  
+  field :level,         type: Integer
 end

@@ -3,6 +3,8 @@
     - f.with_class :xxlarge do
       = f.text_field :firstname, :state => :error, :append => '@bla.com' 
       = f.text_field :lastname, :state => :success, :prepend => f.plain_check_box(:active)
+      
+    = f.text_field :level
     
   .actions
     = f.primary_btn 'Speichern'

@@ -26,10 +26,14 @@ module Brad::Resources::View::TableBuilders
       'table/'
     end
     
+    def table_class
+      [resource_name, options[:class]] * ' '
+    end
+    
     def render_table
       locals = {
         :id => id,
-        :resource_name => resource_name
+        :table_class => table_class
       }
       
       render_partial 'container', locals do
