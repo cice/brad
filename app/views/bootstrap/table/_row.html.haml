@@ -1,2 +1,2 @@
-%tr{:class => resource_name, :data => { :id => object.to_param }}
+%tr{:class => resource_name, :data => { :id => object.try(:to_param) }}
   = yield

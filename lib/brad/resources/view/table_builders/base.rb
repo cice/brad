@@ -33,12 +33,26 @@ module Brad::Resources::View::TableBuilders
     def render_table
       locals = {
         :id => id,
-        :table_class => table_class
+        :table_class => table_class,
+        :head => render_head_row
       }
       
       render_partial 'container', locals do
         collection.each do |object|
           concat render_row(object).html_safe
+        end
+      end
+    end
+    
+    def render_head_row
+      locals = {
+        :object => nil,
+        :resource_name => nil
+      }
+      
+      render_partial 'row', locals do
+        columns.each do |column|
+          concat render_head_cell(column).html_safe
         end
       end
     end
@@ -65,6 +79,17 @@ module Brad::Resources::View::TableBuilders
       }
       
       render_partial 'cell', locals
+    end
+    
+    def render_head_cell column
+      value = column.key
+      
+      locals = {
+        :value => value,
+        :cell_class => column.cell_class
+      }
+      
+      render_partial 'head_cell', locals
     end
   end
 end
