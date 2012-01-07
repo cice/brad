@@ -87,5 +87,15 @@ describe Brad::Resources::View::TableHelpers, :type => :helper do
       
       it { should have_selector('td.test_int.numeric', :content => '1.000')}
     end
+    
+    describe 'table heads' do
+      let(:block) do
+        proc do |t|
+          t.string :test_field_a
+        end
+      end
+      
+      it { should have_selector('thead tr th', :content => 'test_field_a') }
+    end
   end
 end
