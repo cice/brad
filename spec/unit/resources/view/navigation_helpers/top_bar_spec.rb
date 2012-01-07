@@ -38,4 +38,13 @@ describe Brad::View::NavigationHelpers::TopBar, :type => :helper do
     buffer.should have_selector('ul.nav li a[href="/baz"]', :content => 'foo')
     buffer.should have_selector('ul.nav li.active a[href="/buzz"]', :content => 'bar')
   end
+  
+  it 'should render a dropdown' do
+    buffer = helper.nav_list do
+      concat nav_down('Baz') {}
+    end
+    
+    buffer.should have_selector('ul.nav li.dropdown a.dropdown-toggle', :content => 'Baz')
+    buffer.should have_selector('ul.nav li.dropdown ul.dropdown-menu')
+  end
 end

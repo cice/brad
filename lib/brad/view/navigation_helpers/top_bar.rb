@@ -27,5 +27,13 @@ module Brad::View::NavigationHelpers
       }
       render :partial => 'bootstrap/navigation/nav_link_to', :locals => locals
     end
+    
+    def nav_down body, &block
+      locals = {
+        :body => body
+      }
+      
+      render :layout => 'bootstrap/navigation/nav_down', :locals => locals, &block
+    end
   end
 end
