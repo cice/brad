@@ -1,4 +1,4 @@
-module Brad::Resources::View
+module Brad::View
   module BuilderTools
 
     protected

@@ -1,6 +1,6 @@
 module Brad::Resources::View::TableBuilders
   class Base
-    include Brad::Resources::View::BuilderTools
+    include Brad::View::BuilderTools
     attr_reader :resource_name, :collection, :template, :options, :columns
     
     def initialize resource_name, collection, template, options, block
