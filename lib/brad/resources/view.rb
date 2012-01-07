@@ -9,11 +9,9 @@ module Brad::Resources::View
   autoload :TableBuilders, 'brad/resources/view/table_builders'
   autoload :TableHelpers, 'brad/resources/view/table_helpers'
   
-  autoload :LayoutHelpers, 'brad/resources/view/layout_helpers'
-  
   included do
+    include Brad::View
     include FormHelpers
     include TableHelpers
-    include LayoutHelpers
   end
 end

@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Brad::Resources::View::TableHelpers, :type => :helper do
   let(:test_resources) do
-    3.times.map { |i|
+    3.times.map do |i|
       TestResource.create :test_field_a => (i + 1).ordinalize, :test_int => i
-    }
+    end
   end
   
   let(:options) do
@@ -66,7 +66,7 @@ describe Brad::Resources::View::TableHelpers, :type => :helper do
       end
     end
     
-    it { should have_selector('td.test_field_a.alpha-numeric', :content => 'Once upon a time in a world...')}
+    it { should have_selector('td.test_field_a.alpha-numeric', :content => 'Once upon a time in a world...') }
     
     describe 'helper options' do
       let(:block) do
@@ -75,7 +75,7 @@ describe Brad::Resources::View::TableHelpers, :type => :helper do
         end
       end
       
-      it { should have_selector('td.test_field_a.alpha-numeric', :content => 'Once upon a ti...')}
+      it { should have_selector('td.test_field_a.alpha-numeric', :content => 'Once upon a ti...') }
     end
     
     describe 'numeric helpers' do
@@ -85,7 +85,7 @@ describe Brad::Resources::View::TableHelpers, :type => :helper do
         end
       end
       
-      it { should have_selector('td.test_int.numeric', :content => '1.000')}
+      it { should have_selector('td.test_int.numeric', :content => '1.000') }
     end
     
     describe 'table heads' do
@@ -95,7 +95,7 @@ describe Brad::Resources::View::TableHelpers, :type => :helper do
         end
       end
       
-      it { should have_selector('thead tr th', :content => 'test_field_a') }
+      it { should have_selector('thead tr th.alpha-numeric', :content => 'test_field_a') }
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Brad::Resources::View::LayoutHelpers::Sections, :type => :helper do
+describe Brad::View::LayoutHelpers::Sections, :type => :helper do
   it 'should generate a section' do
     buffer = helper.section do
       concat content_tag(:div, "foobar")

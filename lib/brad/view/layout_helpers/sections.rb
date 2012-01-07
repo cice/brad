@@ -1,4 +1,4 @@
-module Brad::Resources::View::LayoutHelpers
+module Brad::View::LayoutHelpers
   module Sections
     def section *args, &block
       options = args.extract_options!
