@@ -52,7 +52,7 @@ module Brad::Resources::View::FormBuilders
       submit value, options
     end
     
-    %w(primary secondary info success danger).each do |type|
+    Brad::View::ButtonHelpers::BUTTON_TYPES.each do |type|
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
         def #{type}_btn value = nil, options = {}
           typed_btn value, '#{type}', options
