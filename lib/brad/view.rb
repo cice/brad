@@ -1,6 +1,8 @@
 module Brad
   module View
     extend ActiveSupport::Concern
+
+    autoload :TagOptions,         'brad/view/tag_options'
   
     autoload :BuilderTools,       'brad/view/builder_tools'
     
