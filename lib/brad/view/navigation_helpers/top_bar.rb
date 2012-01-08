@@ -35,5 +35,9 @@ module Brad::View::NavigationHelpers
       
       render :layout => 'bootstrap/navigation/nav_down', :locals => locals, &block
     end
+
+    def nav_divider
+      content_tag :li, '', :class => 'divider'
+    end
   end
 end

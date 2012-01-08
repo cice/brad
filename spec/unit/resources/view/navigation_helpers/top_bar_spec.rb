@@ -47,4 +47,14 @@ describe Brad::View::NavigationHelpers::TopBar, :type => :helper do
     buffer.should have_selector('ul.nav li.dropdown a.dropdown-toggle', :content => 'Baz')
     buffer.should have_selector('ul.nav li.dropdown ul.dropdown-menu')
   end
+
+  it 'should render a nav divider' do
+    buffer = helper.nav_list do
+      concat nav_down('Baz') {
+        concat nav_divider
+      }
+    end
+
+    buffer.should have_selector('ul.nav li.dropdown ul.dropdown-menu li.divider')
+  end
 end
