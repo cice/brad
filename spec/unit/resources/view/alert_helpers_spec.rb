@@ -20,6 +20,6 @@ describe Brad::View::AlertHelpers, :type => :helper do
       concat 'tell me!'
     end
 
-    buffer.should have_selector('.alert-message.block-message.success', :content => 'tell me!')
+    buffer.should have_selector('.alert-message.block-message.success', :content => 'tell me')
   end
 end
