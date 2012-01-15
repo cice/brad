@@ -10,21 +10,23 @@ module Brad::Resources::View::FormBuilders
         end
       RUBY
     end
-    
+
     def bootstrap_field_layout method, options = {}, &block
       options = apply_global_options options
       state = options.delete(:state) || ""
       prepend = options.delete(:prepend)
       append = options.delete(:append)
-      
+      help = options.delete(:help)
+
       locals = {
         :builder => self,
         :state => state,
         :prepend => prepend,
         :append => append,
-        :method => method
+        :method => method,
+        :help => help
       }
-      
+
       partial_name = if prepend
         'input_prepend'
       elsif append
@@ -32,26 +34,26 @@ module Brad::Resources::View::FormBuilders
       else
         'input'
       end
-      
+
       render_partial partial_name, locals do
         block[options]
       end
     end
-    
+
     def fieldset legend, &block
       render_partial 'fieldset', :legend => legend, &block
     end
-    
+
     def typed_btn value = nil, type = nil, options = {}
       options = apply_global_options options
-      
+
       type ||= 'primary'
       klass = options[:class] ||= ""
       klass << " btn #{type}"
-      
+
       submit value, options
     end
-    
+
     Brad::View::ButtonHelpers::BUTTON_TYPES.each do |type|
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
         def #{type}_btn value = nil, options = {}
@@ -59,23 +61,23 @@ module Brad::Resources::View::FormBuilders
         end
       RUBY
     end
-    
+
     def with_class class_name, &block
       @_prior_with_class = @_with_class.dup if @_with_class
       @_with_class ||= ""
       @_with_class << " #{class_name}"
-      
+
       concat @template.capture(&block)
     ensure
       @_with_class = @_prior_with_class
       @_prior_with_class = nil
     end
-    
+
     protected
     def partial_prefix
       "bootstrap/#{super}"
     end
-    
+
     def apply_global_options options
       options.dup.tap do |opts|
         klass = opts[:class]
@@ -84,7 +86,7 @@ module Brad::Resources::View::FormBuilders
         else
           opts[:class] = ""
         end
-        
+
         klass << @_with_class if @_with_class
       end
     end
