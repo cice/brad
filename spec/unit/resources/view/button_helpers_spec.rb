@@ -13,7 +13,7 @@ describe Brad::View::ButtonHelpers, :type => :helper do
 
       buffer.should have_selector('a.btn.primary[href="#foo"]', :content => 'Foo')
     end
-  end 
+  end
 
   describe '#small_btn_to' do
     it 'should render a link with btn.small class' do
@@ -21,5 +21,5 @@ describe Brad::View::ButtonHelpers, :type => :helper do
 
       buffer.should have_selector('a.btn.small[href="#foo"]', :content => 'Foo')
     end
-  end 
+  end
 end

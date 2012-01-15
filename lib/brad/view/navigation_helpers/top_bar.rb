@@ -7,18 +7,22 @@ module Brad::View::NavigationHelpers
         :brand      => brand,
         :brand_url  => brand_url
       }
-      
-      render :layout => 'bootstrap/navigation/top_bar', :locals => locals, &block
+
+      if block_given?
+        render :layout => 'bootstrap/navigation/top_bar', :locals => locals, &block
+      else
+        render :partial => 'bootstrap/navigation/top_bar', :locals => locals
+      end
     end
-    
+
     def nav_list &block
       render :layout => 'bootstrap/navigation/nav_list', &block
     end
-    
+
     def nav_link_to body_or_url, *link_to_args, &block
       url = block_given? ? body_or_url : link_to_args.first
       is_active = current_page?(url) ? 'active' : nil
-      
+
       locals = {
         :body       => body_or_url,
         :args       => link_to_args,
@@ -27,12 +31,12 @@ module Brad::View::NavigationHelpers
       }
       render :partial => 'bootstrap/navigation/nav_link_to', :locals => locals
     end
-    
+
     def nav_down body, &block
       locals = {
         :body => body
       }
-      
+
       render :layout => 'bootstrap/navigation/nav_down', :locals => locals, &block
     end
 
