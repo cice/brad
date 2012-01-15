@@ -1,6 +1,7 @@
 class User
-  include Brad::Resources::Model
-  
+  include Mongoid::Document
+  include Brad::Resources::Model::Mongoid
+
   field :firstname,     type: String
   field :lastname,      type: String
   field :email,         type: String

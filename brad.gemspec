@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'fabrication'
   s.add_development_dependency 'yard'
 
-  s.add_dependency 'actionpack', '~> 3.1.1'
+  s.add_dependency 'actionpack', '>= 3.1.1'
   s.add_dependency 'kaminari', '~> 0.12.4'
   s.add_dependency 'bootstrap-sass', '~> 1.4.0'
   s.add_dependency 'inherited_resources', '~> 1.3.0'
