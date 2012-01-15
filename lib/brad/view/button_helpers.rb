@@ -9,14 +9,6 @@ module Brad::View::ButtonHelpers
     link_to *(link_to_args << options), &block
   end
 
-  def small_btn_to *link_to_args, &block
-    options = link_to_args.extract_options!.dup
-    options[:class] ||= ""
-    options[:class] += " btn small"
-
-    link_to *(link_to_args << options), &block
-  end
-
   BUTTON_TYPES.each do |type|
     class_eval <<-RUBY
       def #{type}_btn_to *btn_to_args, &block
