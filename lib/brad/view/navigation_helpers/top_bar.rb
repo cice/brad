@@ -19,15 +19,22 @@ module Brad::View::NavigationHelpers
       render :layout => 'bootstrap/navigation/nav_list', &block
     end
 
+    def nav_t key, options = {}
+      @nav_i18n_scope ||= Brad::View::I18N_SCOPE.derive :nav
+
+      @nav_i18n_scope.t key, options
+    end
+
     def nav_link_to body_or_url, *link_to_args, &block
       url = block_given? ? body_or_url : link_to_args.first
+      body_or_url = block_given? ? body_or_url : nav_t(body_or_url)
       is_active = current_page?(url) ? 'active' : nil
 
       locals = {
-        :body       => body_or_url,
-        :args       => link_to_args,
-        :block      => block,
-        :li_class   => is_active
+        :body_or_url => body_or_url,
+        :args        => link_to_args,
+        :block       => block,
+        :li_class    => is_active
       }
       render :partial => 'bootstrap/navigation/nav_link_to', :locals => locals
     end
