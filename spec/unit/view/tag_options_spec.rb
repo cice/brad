@@ -25,4 +25,11 @@ describe Brad::View::TagOptions do
 
     tag_options[:class].should == 'abc def'
   end
+
+  it 'should work with Array#extract_options!' do
+    hash = { :abc => 'def' }.to_tag_options
+    array = [:a, :b, hash]
+
+    array.extract_options![:abc].should == 'def'
+  end
 end

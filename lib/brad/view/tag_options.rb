@@ -25,4 +25,8 @@ class Brad::View::TagOptions < Hash
   def to_tag_options
     self
   end
+
+  def extractable_options?
+    true
+  end
 end
