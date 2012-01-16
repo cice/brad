@@ -8,6 +8,13 @@ en:
         firstname: Firstname
         lastname: Lastname
         level: Level
+      groups:
+        name: Name
+
+    section:
+      users: Users
+      groups: Groups
 
     nav:
       users: Users
+      groups: Groups
