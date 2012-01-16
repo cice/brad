@@ -11,6 +11,8 @@ gem "inherited_resources"
 
 gem 'haml-rails'
 
+gem 'awesome_print'
+
 gem "autotest", :require => false
 gem "autotest-growl", :require => false
 gem "autotest-fsevent", :require => false
