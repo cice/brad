@@ -1,9 +1,9 @@
 module Brad::View::LayoutHelpers
   extend ActiveSupport::Concern
-  
-  autoload :Sections, 'brad/view/layout_helpers/sections'
-  
+
+  autoload :SectionHelpers, 'brad/view/layout_helpers/section_helpers'
+
   included do
-    include Sections
+    include SectionHelpers
   end
 end

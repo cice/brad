@@ -1,5 +1,5 @@
 module Brad::View::LayoutHelpers
-  module Sections
+  module SectionHelpers
     def section_t key, options = {}
       @section_i18n_scope ||= Brad::View::I18N_SCOPE.derive 'section'
 
