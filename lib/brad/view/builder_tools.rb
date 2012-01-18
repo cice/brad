@@ -5,7 +5,7 @@ module Brad::View
     def partial_prefix
       ''
     end
-    
+
     def render_partial partial, locals = {}, &block
       partial = [partial_prefix, partial].join
 
@@ -15,11 +15,11 @@ module Brad::View
         render :partial => partial, :locals => locals
       end
     end
-    
+
     def render *args, &block
       @template.render *args, &block
     end
-    
+
     def concat buffer
       @template.concat buffer
     end
