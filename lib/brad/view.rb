@@ -25,5 +25,11 @@ module Brad
       include LabelHelpers
       include DialogHelpers
     end
+
+    def localize value, *args, &block
+      return nil unless value
+
+      super
+    end
   end
 end

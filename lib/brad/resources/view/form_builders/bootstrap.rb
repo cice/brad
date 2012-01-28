@@ -61,7 +61,7 @@ module Brad::Resources::View::FormBuilders
       render_partial 'fieldset', :legend => legend, &block
     end
 
-    def btn value, options = {}
+    def btn value = nil, options = {}
       options = apply_global_options options
 
       klass = options[:class] ||= ""
