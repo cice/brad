@@ -89,7 +89,7 @@ module Brad::Resources::View::TableBuilders
     end
 
     def render_head_cell column
-      value = t column.key
+      value = t column.keys.map(&:to_s)*"_"
 
       locals = {
         :value => value,

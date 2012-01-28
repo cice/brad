@@ -13,6 +13,7 @@ module Brad
     autoload :AlertHelpers,       'brad/view/alert_helpers'
     autoload :ButtonHelpers,      'brad/view/button_helpers'
     autoload :LabelHelpers,       'brad/view/label_helpers'
+    autoload :DialogHelpers,      'brad/view/dialog_helpers'
 
     I18N_SCOPE = I18nScope.new 'helpers'
 
@@ -22,6 +23,7 @@ module Brad
       include AlertHelpers
       include ButtonHelpers
       include LabelHelpers
+      include DialogHelpers
     end
   end
 end
