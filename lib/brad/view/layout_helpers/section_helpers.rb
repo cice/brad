@@ -13,7 +13,7 @@ module Brad::View::LayoutHelpers
       locals = {
         :options  => options,
         :h1       => section_t(h1),
-        :small    => small
+        :h1_small    => small
       }
 
       render :layout => "bootstrap/layout/section", :locals => locals, &block

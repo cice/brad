@@ -18,6 +18,11 @@ module Brad::Resources::View::FormBuilders
       append = options.delete(:append)
       help = options.delete(:help)
 
+      if has_errors?(method)
+        help ||= error_help_for method
+        state = "error"
+      end
+
       locals = {
         :builder => self,
         :state => state,
@@ -40,8 +45,29 @@ module Brad::Resources::View::FormBuilders
       end
     end
 
+    def error_help_for method
+      if has_errors?(method)
+        object.errors[method].join ", "
+      else
+        nil
+      end
+    end
+
+    def has_errors? method
+      object.errors[method].present?
+    end
+
     def fieldset legend, &block
       render_partial 'fieldset', :legend => legend, &block
+    end
+
+    def btn value, options = {}
+      options = apply_global_options options
+
+      klass = options[:class] ||= ""
+      klass << " btn"
+
+      submit value, options
     end
 
     def typed_btn value = nil, type = nil, options = {}
