@@ -1,0 +1,8 @@
+.control-group{:class => state}
+  = builder.label method, :class => 'control-label'
+
+  .controls
+    = yield
+    - if help
+      %span.help-block
+        = help

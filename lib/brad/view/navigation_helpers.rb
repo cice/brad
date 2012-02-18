@@ -1,9 +1,9 @@
 module Brad::View::NavigationHelpers
   extend ActiveSupport::Concern
 
-  autoload :TopBar, 'brad/view/navigation_helpers/top_bar'
+  autoload :NavBar, 'brad/view/navigation_helpers/nav_bar'
 
   included do
-    include TopBar
+    include NavBar
   end
 end

@@ -8,7 +8,7 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
       end
     end
 
-    it { should_not have_selector '.clearfix .input input#test_resource_test_field_a'}
+    it { should_not have_selector '.control-group .controls input#test_resource_test_field_a'}
     it { should have_selector 'input#test_resource_test_field_a' }
   end
 
@@ -19,8 +19,8 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
       end
     end
 
-    it { should have_selector '.clearfix .input input#test_resource_test_field_a'}
-    it { should have_selector '.clearfix label' }
+    it { should have_selector '.control-group .controls input#test_resource_test_field_a'}
+    it { should have_selector '.control-group label.control-label' }
   end
 
   describe 'simple text area' do
@@ -30,8 +30,8 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
       end
     end
 
-    it { should have_selector '.clearfix .input textarea#test_resource_test_field_a'}
-    it { should have_selector '.clearfix label' }
+    it { should have_selector '.control-group .controls textarea#test_resource_test_field_a'}
+    it { should have_selector '.control-group label.control-label' }
   end
 
   describe '#fieldset' do
@@ -45,7 +45,7 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
     end
 
     it { should have_selector('fieldset legend', :content => 'Foo') }
-    it { should have_selector 'fieldset .clearfix .input input'}
+    it { should have_selector 'fieldset .control-group .controls input'}
   end
 
   describe 'prepended inputs' do
@@ -55,7 +55,7 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
       end
     end
 
-    it { should have_selector('.clearfix .input .input-prepend span.add-on', :content => 'foo?')}
+    it { should have_selector('.control-group .controls .input-prepend span.add-on', :content => 'foo?')}
   end
 
   describe 'appended inputs' do
@@ -65,7 +65,7 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
       end
     end
 
-    it { should have_selector('.clearfix .input .input-append span.add-on', :content => 'foo?')}
+    it { should have_selector('.control-group .controls .input-append span.add-on', :content => 'foo?')}
   end
 
   describe 'input prepended with checkbox' do
@@ -75,7 +75,7 @@ describe Brad::Resources::View::FormHelpers, :type => :helper do
       end
     end
 
-    it { should have_selector('.clearfix .input .input-prepend span.add-on input[type="checkbox"]')}
+    it { should have_selector('.control-group .controls .input-prepend span.add-on input[type="checkbox"]')}
   end
 
   describe '#primary_btn' do

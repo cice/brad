@@ -30,7 +30,7 @@ module Brad::Resources::View::TableBuilders
     end
 
     def partial_prefix
-      'table/'
+      'bootstrap/table/'
     end
 
     def table_class

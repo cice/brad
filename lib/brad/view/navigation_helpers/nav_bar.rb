@@ -1,17 +1,15 @@
 module Brad::View::NavigationHelpers
-  module TopBar
-    autoload :Builder,  'brad/view/navigation_helpers/top_bar/builder'
-
-    def top_bar brand = nil, brand_url = '#', &block
+  module NavBar
+    def nav_bar brand = nil, brand_url = '#', &block
       locals = {
         :brand      => brand,
         :brand_url  => brand_url
       }
 
       if block_given?
-        render :layout => 'bootstrap/navigation/top_bar', :locals => locals, &block
+        render :layout => 'bootstrap/navigation/nav_bar', :locals => locals, &block
       else
-        render :partial => 'bootstrap/navigation/top_bar', :locals => locals
+        render :partial => 'bootstrap/navigation/nav_bar', :locals => locals
       end
     end
 

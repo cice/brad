@@ -45,8 +45,8 @@ module Brad::Resources::View::TableBuilders
       name && template.send(name, value, *args) || value
     end
 
-    def retrieve_value_from object, template
-      if block
+    def retrieve_value_from object, template = nil
+      if template && block
         return template.capture(object, &block)
       end
 

@@ -1,5 +1,6 @@
 module Brad::Resources::View::FormBuilders
-  class Bootstrap < Base
+  class Horizontal < Base
+
     (field_helpers - %w(label fields_for hidden_field)).each do |field_helper|
       class_eval <<-RUBY, __FILE__, __LINE__ + 1
         alias_method "plain_#{field_helper}", "#{field_helper}"
@@ -101,7 +102,7 @@ module Brad::Resources::View::FormBuilders
 
     protected
     def partial_prefix
-      "bootstrap/#{super}"
+      "bootstrap/form/horizontal/"
     end
 
     def apply_global_options options

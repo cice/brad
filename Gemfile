@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
-gem "rails", "~> 3.1.1"
+gem "rails", "~> 3.2.1"
 gem "capybara", ">= 0.4.0"
 gem "mongoid"
 gem "bson_ext"

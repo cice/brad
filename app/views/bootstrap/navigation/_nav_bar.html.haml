@@ -1,0 +1,6 @@
+.navbar
+  .navbar-inner
+    .container
+      - if brand
+        = link_to brand, brand_url, :class => 'brand'
+      = yield
