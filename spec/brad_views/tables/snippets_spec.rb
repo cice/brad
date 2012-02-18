@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BradViews::BaseCss::Tables::Snippets do
+describe BradViews::Tables::Snippets do
   let :template do
     ActionView::Base.new
   end

@@ -1,4 +1,4 @@
-module Brad::Resources::View::TableBuilders
+module BradViews::Tables
   class Column
     attr_reader :keys, :options, :block
 
@@ -9,7 +9,7 @@ module Brad::Resources::View::TableBuilders
     end
 
     def key
-      keys.first
+      @key ||= keys.join '_'
     end
 
     def cell_class
@@ -28,7 +28,7 @@ module Brad::Resources::View::TableBuilders
         [args.dup]
       when Array
         args.map do |e|
-          Hash =~ e ? e.dup : e
+          Hash === e ? e.dup : e
         end
       when nil
         []
@@ -37,7 +37,7 @@ module Brad::Resources::View::TableBuilders
       end
     end
 
-    def render_value object, template
+    def render_value object, template = nil
       value = retrieve_value_from object, template
 
       name = helper_name

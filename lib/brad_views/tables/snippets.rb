@@ -1,4 +1,4 @@
-module BradViews::BaseCss::Tables
+module BradViews::Tables
   class Snippets < BradViews::Tools::Snippets
     def table header = nil, footer = nil, options = {}, html_options = {}, &block
       html_options = html_options.to_tag_options.merge :class => 'table'

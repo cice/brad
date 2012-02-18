@@ -1,4 +1,4 @@
-module Brad::Resources::View::TableBuilders
+module BradViews::Tables
   class Schema < ActiveSupport::BasicObject
     NUMERIC_HELPERS = [ :number_to_currency, :number_to_human, :number_to_human_size, :number_to_percentag,
       :number_to_phone, :number_with_delimiter, :number_with_precision, :localize, :l

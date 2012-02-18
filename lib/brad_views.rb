@@ -1,4 +1,4 @@
 module BradViews
   autoload :Tools, 'brad_views/tools'
-  autoload :BaseCss, 'brad_views/base_css'
+  autoload :Tables, 'brad_views/tables'
 end

@@ -1,4 +1,4 @@
-module BradViews::BaseCss::Tables
+module BradViews::Tables
   class Builder
     include BradViews::Tools::Builder
     attr_reader :resource_name, :collection, :template, :options, :columns, :i18n_scope, :snippets
