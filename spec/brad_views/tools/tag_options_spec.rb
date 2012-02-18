@@ -1,6 +1,7 @@
 require 'spec_helper'
+require 'active_support/core_ext/hash'
 
-describe Brad::View::TagOptions do
+describe BradViews::Tools::TagOptions do
   it 'should be a Hash' do
     described_class.new.should be_a Hash
   end

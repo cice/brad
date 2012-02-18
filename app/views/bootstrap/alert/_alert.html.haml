@@ -1,6 +1,8 @@
 .alert-message{:class => msg_class}
   = link_to 'x', '#', :class => 'close'
+
   %p
     %strong= caption
     = text
+
   = yield if block_given?

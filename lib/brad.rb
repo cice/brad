@@ -1,8 +1,10 @@
 require 'brad/version'
 
-require 'brad/engine'
-require 'brad/core_ext'
+require 'brad_views'
 
-require 'brad/view'
-require 'brad/resources'
+#require 'brad/engine'
+#require 'brad/core_ext'
+
+#require 'brad/view'
+#require 'brad/resources'
 
