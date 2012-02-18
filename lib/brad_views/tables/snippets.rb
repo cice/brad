@@ -1,5 +1,6 @@
 module BradViews::Tables
   class Snippets < BradViews::Tools::Snippets
+
     def table header = nil, footer = nil, options = {}, html_options = {}, &block
       html_options = html_options.to_tag_options.merge :class => 'table'
 
@@ -30,9 +31,12 @@ module BradViews::Tables
       content_tag :tr, content, options, &block
     end
 
-    def table_cell content = nil, options = nil, th = false, &block
-      type = th ? 'th' : 'td'
-      content_tag type, content, options, &block
+    def table_cell content = nil, options = nil, &block
+      content_tag 'td', content, options, &block
+    end
+
+    def table_head_cell content = nil, options = nil, &block
+      content_tag 'th', content, options, &block
     end
   end
 end

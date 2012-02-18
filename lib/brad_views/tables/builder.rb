@@ -3,8 +3,6 @@ module BradViews::Tables
     include BradViews::Tools::Builder
     attr_reader :resource_name, :collection, :template, :options, :columns, :i18n_scope, :snippets
 
-    I18N_SCOPE = BradViews::I18N_SCOPE.derive 'tables'
-
     def initialize resource_name, collection, template, options, block
       @resource_name, @collection, @template, @options = resource_name, collection, template, options
 
@@ -21,7 +19,7 @@ module BradViews::Tables
 
       snippets.table render_head, render_foot, options, html_options do
         collection.each do |object|
-          concat render_row(object)
+          template.concat render_row(object)
         end
       end
     end
@@ -33,13 +31,27 @@ module BradViews::Tables
 
       snippets.table_row nil, html_options do
         columns.each do |column|
-          concat render_cell(column, object)
+          template.concat render_cell(column, object)
         end
       end
     end
 
+    def render_cell column, object
+      value = column.render_value object, template
+
+      snippets.table_cell value, :class => column.cell_class
+    end
+
     def render_head
-      nil
+      snippets.table_row do
+        columns.each do |column|
+          template.concat render_head_cell(column)
+        end
+      end
+    end
+
+    def render_head_cell column
+      snippets.table_head_cell t(column.key), { :class => column.cell_class }
     end
 
     def render_foot

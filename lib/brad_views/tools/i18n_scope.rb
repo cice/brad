@@ -1,4 +1,4 @@
-module Brad::View
+module BradViews::Tools
   class I18nScope
     def initialize scope, parent = I18n
       @scope = scope

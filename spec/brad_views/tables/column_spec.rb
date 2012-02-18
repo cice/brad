@@ -76,7 +76,45 @@ describe BradViews::Tables::Column do
         subject.helper_args.should == [ 'foobar' ]
       end
     end
-
   end
 
+  describe 'retrieve values' do
+    let :mock_object do
+      mock 'mock_object', :foo => mock('foo', :bar => 'baz')
+    end
+
+    it 'should retrieve nested values via multiple keys' do
+      subject.retrieve_value_from(mock_object).should == 'baz'
+    end
+
+    describe 'interacting with templates' do
+      let :template do
+        ActionView::Base.new
+      end
+
+      describe 'using block to render a value' do
+        let :block do
+          proc { |object| template.concat object.foo.bar + "zes" }
+        end
+
+        it 'should evaluate the block' do
+          subject.retrieve_value_from(mock_object, template).should == 'bazzes'
+        end
+      end
+
+      describe 'feeding value through a helper' do
+        let :options do
+          {
+            :helper_name => :tag,
+            :helper => [nil, true]
+          }
+        end
+
+        it 'should call that helper with given args' do
+          subject.render_value(mock_object, template).should == '<baz>'
+        end
+      end
+    end
+
+  end
 end

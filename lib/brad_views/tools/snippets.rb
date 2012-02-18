@@ -38,7 +38,7 @@ module BradViews::Tools
 
       self.class.class_eval <<-RUBY
         def #{name}! *args, &block
-          concat #{name}, *args, &block
+          concat #{name}(*args, &block)
         end
       RUBY
 

@@ -40,9 +40,12 @@ module BradViews::Tables
     def render_value object, template = nil
       value = retrieve_value_from object, template
 
-      name = helper_name
-      args = helper_args
-      name && template.send(name, value, *args) || value
+      if name = helper_name
+        args = helper_args
+        template.send name, value, *args
+      else
+        value
+      end
     end
 
     def retrieve_value_from object, template = nil

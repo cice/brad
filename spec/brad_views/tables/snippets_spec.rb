@@ -57,13 +57,13 @@ describe BradViews::Tables::Snippets do
     end
   end
 
-  describe '#table_cell with th option' do
+  describe '#table_head_cell' do
     it 'should render a th tag' do
-      subject.table_cell("foo", nil, true).should have_selector('th', :content => 'foo')
+      subject.table_head_cell("foo", nil).should have_selector('th', :content => 'foo')
     end
 
     it 'should render a th tag with block' do
-      subject.table_cell(nil, nil, true){ template.concat 'foo' }.should have_selector('th', :content => 'foo')
+      subject.table_head_cell(nil, nil){ template.concat 'foo' }.should have_selector('th', :content => 'foo')
     end
   end
 
