@@ -17,7 +17,7 @@ module BradViews::Tables
         :class => table_class
       }
 
-      snippets.table render_head, render_foot, options, html_options do
+      snippets.table render_head, nil, options, html_options do
         collection.each do |object|
           template.concat render_row(object)
         end
@@ -52,10 +52,6 @@ module BradViews::Tables
 
     def render_head_cell column
       snippets.table_head_cell t(column.key), { :class => column.cell_class }
-    end
-
-    def render_foot
-      nil
     end
 
     protected

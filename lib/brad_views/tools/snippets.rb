@@ -30,6 +30,14 @@ module BradViews::Tools
       template.tag *args, &block
     end
 
+    def div_tag *args, &block
+      content_tag :div, *args, &block
+    end
+
+    def span_tag *args, &block
+      content_tag :span, *args, &block
+    end
+
     protected
     def method_missing name, *args, &block
       super unless respond_to?(name)
