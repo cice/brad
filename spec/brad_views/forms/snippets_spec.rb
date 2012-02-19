@@ -16,9 +16,33 @@ describe BradViews::Forms::Snippets do
       html.should have_selector(".control-group label.control-label", :content => "Some Label")
       html.should have_selector(".control-group .controls", :content => "Some Controls")
     end
+
+    it 'should apply states' do
+      html = subject.control_group "Some Label", nil, :warning do
+        template.concat "Some Controls"
+      end
+
+      html.should have_selector(".control-group.warning")
+    end
   end
 
-  it 'should render a help-block' do
+  it 'input_prepend should render markup for prepended inputs' do
+    html = subject.input_prepend "prepend this!" do
+      template.concat "right before this"
+    end
+
+    html.should have_selector('.input-prepend .add-on', :content => 'prepend this!')
+  end
+
+  it 'input_append should render markup for appended inputs' do
+    html = subject.input_append "append this!" do
+      template.concat "right before this"
+    end
+
+    html.should have_selector('.input-append .add-on', :content => 'append this!')
+  end
+
+  it 'help_block should render a help-block' do
     html = subject.help_block "Some Help"
 
     html.should have_selector("p.help-block", :content => "Some Help")
