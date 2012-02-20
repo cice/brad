@@ -19,7 +19,21 @@ module BradViews::Forms
       label_html = label method
       control_html = send "plain_#{control}", method, options
 
-      label_html + control_html
+      label_html + control_html + error_help_for(method)
+    end
+
+    def has_errors? method
+      @object.errors[method].present?
+    end
+
+    def errors_for method
+      @object.errors[method].join(", ")
+    end
+
+    def error_help_for method
+      return '' unless has_errors?(method)
+
+      snippets.help_inline errors_for method
     end
 
     alias_method :plain_button, :button

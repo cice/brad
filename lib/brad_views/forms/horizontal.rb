@@ -8,9 +8,18 @@ module BradViews::Forms
     def labeled_control control, method, options = {}
       control_html = send "plain_#{control}", method, options
 
-      snippets.control_group nil, method do
+      state = 'error' if has_errors?(method)
+
+      snippets.control_group nil, method, state do
         @template.concat control_html
+        @template.concat error_help_for(method)
       end
+    end
+
+    def error_help_for method
+      return '' unless has_errors?(method)
+
+      snippets.help_block errors_for method
     end
   end
 end

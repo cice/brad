@@ -5,8 +5,12 @@ describe BradViews::Forms::Basic do
     ActionView::Base.new
   end
 
+  let :errors do
+    ActiveModel::Errors.new(nil)
+  end
+
   let :object do
-    mock "User", :name => 'Max', :active => false
+    mock "User", :name => 'Max', :active => false, :errors => errors
   end
 
   subject do
@@ -24,6 +28,21 @@ describe BradViews::Forms::Basic do
 
     html.should have_selector('label[@for="user_name"]', :content => 'Name')
     html.should have_selector('input')
+  end
+
+  describe 'fields with errors' do
+    let :errors do
+      ActiveModel::Errors.new(nil).tap do |e|
+        e.add :name, 'cant be blank'
+        e.add :name, 'at least 8 chars'
+      end
+    end
+
+    it 'should render errors as help text' do
+      html = subject.text_field :name
+
+      html.should have_selector('span.help-inline', :content => 'cant be blank, at least 8 chars')
+    end
   end
 
   it 'submit etc should be buttons with btn class' do
