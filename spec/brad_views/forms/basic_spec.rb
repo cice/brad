@@ -6,7 +6,7 @@ describe BradViews::Forms::Basic do
   end
 
   let :object do
-    mock "User", :name => 'Max'
+    mock "User", :name => 'Max', :active => false
   end
 
   subject do
@@ -36,5 +36,17 @@ describe BradViews::Forms::Basic do
     html = subject.primary_btn 'Send'
 
     html.should have_selector('button.btn-primary', :content => 'Send')
+  end
+
+  it 'button sizes' do
+    html = subject.button 'Send', :size => 'small'
+
+    html.should have_selector('button.btn.btn-small', :content => 'Send')
+  end
+
+  it 'checkboxes should be wrapped in a label tag' do
+    html = subject.check_box :active
+
+    html.should have_selector('label.checkbox input[@type="checkbox"]')
   end
 end

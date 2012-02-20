@@ -30,10 +30,22 @@ module BradViews::Forms
       plain_button value, options
     end
 
+    alias_method :plain_submit, :submit
     def submit value = nil, options = {}
-      typed_button nil, value, options = {}
+      options = options.to_tag_options
+      size = options.delete :size
+      options.merge! :class => "btn-#{size}" if size
+
+      typed_button nil, value, options
     end
     alias_method :button, :submit
+
+    alias_method :plain_check_box, :check_box
+    def check_box method, options = {}, checked_value = "1", unchecked_value = "0"
+      @template.content_tag :label, :class => 'checkbox' do
+        @template.concat super
+      end
+    end
 
     BUTTON_TYPES.each do |button_type|
       class_eval <<-RUBY
