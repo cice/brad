@@ -1,3 +1,3 @@
 class ResourcesController < ApplicationController
-  include Brad::Resources::Controller
+  helper BradViews::Helper
 end

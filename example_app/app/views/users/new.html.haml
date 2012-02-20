@@ -1,11 +1,8 @@
-= section 'User', 'Create a new user', :id => 'new_user' do
-  = form_for @user do |f|
-    = f.fieldset "Benutzer" do
-      - f.with_class :xxlarge do
-        = f.text_field :firstname, :state => :error, :append => '@bla.com' 
-        = f.text_field :lastname, :state => :success, :prepend => f.plain_check_box(:active)
-      
-      = f.text_field :level
-    
-    .actions
-      = f.primary_btn 'Speichern'
+= horizontal_form_for @user do |f|
+  = f.text_field :firstname
+  = f.text_field :lastname
+
+  = f.text_field :level
+
+  = f.actions do
+    = f.primary_btn 'Speichern'

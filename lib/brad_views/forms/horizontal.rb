@@ -14,11 +14,5 @@ module BradViews::Forms
         @template.concat error_help_for(method)
       end
     end
-
-    def error_help_for method
-      return '' unless has_errors?(method)
-
-      snippets.help_block errors_for method
-    end
   end
 end

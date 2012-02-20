@@ -1,6 +1,5 @@
 class User
   include Mongoid::Document
-  include Brad::Resources::Model::Mongoid
 
   field :firstname,     type: String
   field :lastname,      type: String
@@ -10,4 +9,6 @@ class User
   field :occupation,    type: String
   field :active,        type: Boolean
   field :level,         type: Integer
+
+  validates_presence_of :firstname
 end

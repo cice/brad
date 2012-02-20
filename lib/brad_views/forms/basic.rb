@@ -4,6 +4,7 @@ module BradViews::Forms
 
     LABELED_CONTROLS = field_helpers - %w(label check_box radio_button fields_for hidden_field)
     BUTTON_TYPES = %w(primary info success warning danger inverse)
+    ERROR_SEPARATOR = ', '
 
     def initialize *args, &block
       super
@@ -27,13 +28,13 @@ module BradViews::Forms
     end
 
     def errors_for method
-      @object.errors[method].join(", ")
+      @object.errors[method].join ERROR_SEPARATOR
     end
 
     def error_help_for method
       return '' unless has_errors?(method)
 
-      snippets.help_inline errors_for method
+      help errors_for method
     end
 
     alias_method :plain_button, :button
