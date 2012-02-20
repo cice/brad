@@ -25,4 +25,16 @@ describe BradViews::Forms::Basic do
     html.should have_selector('label[@for="user_name"]', :content => 'Name')
     html.should have_selector('input')
   end
+
+  it 'submit etc should be buttons with btn class' do
+    html = subject.submit 'Send'
+
+    html.should have_selector('button.btn', :content => 'Send')
+  end
+
+  it 'typed buttons' do
+    html = subject.primary_btn 'Send'
+
+    html.should have_selector('button.btn-primary', :content => 'Send')
+  end
 end
