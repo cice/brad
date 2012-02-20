@@ -15,6 +15,10 @@ module BradViews::Forms
       content_tag :p, content, :class => 'help-block'
     end
 
+    def help_inline content
+      content_tag :span, content, :class => 'help-inline'
+    end
+
     def input_prepend content, &block
       div_tag :class => 'input-prepend' do
         span_tag! content, :class => 'add-on'
