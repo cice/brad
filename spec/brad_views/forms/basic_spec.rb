@@ -49,4 +49,10 @@ describe BradViews::Forms::Basic do
 
     html.should have_selector('label.checkbox input[@type="checkbox"]')
   end
+
+  it 'inline checkboxes' do
+    html = subject.inline_check_box :active
+
+    html.should have_selector('label.checkbox.inline input[@type="checkbox"]')
+  end
 end

@@ -47,6 +47,12 @@ module BradViews::Forms
       end
     end
 
+    def inline_check_box method, options = {}, checked_value = "1", unchecked_value = "0"
+      @template.content_tag :label, :class => 'checkbox inline' do
+        @template.concat plain_check_box(method, options, checked_value, unchecked_value)
+      end
+    end
+
     BUTTON_TYPES.each do |button_type|
       class_eval <<-RUBY
         def #{button_type}_btn value = nil, options = {}
