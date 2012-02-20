@@ -55,4 +55,20 @@ describe BradViews::Forms::Basic do
 
     html.should have_selector('label.checkbox.inline input[@type="checkbox"]')
   end
+
+  it 'actions should render a form-actions div' do
+    html = subject.actions do
+      template.concat "some buttons"
+    end
+
+    html.should have_selector('div.form-actions', :content => 'some buttons')
+  end
+
+  it 'actions with size should set size for all butons' do
+    html = subject.actions :size => :small do
+      template.concat subject.button("Send")
+    end
+
+    html.should have_selector('.form-actions button.btn-small')
+  end
 end

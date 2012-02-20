@@ -18,4 +18,11 @@ describe BradViews::Forms::Horizontal do
 
     html.should have_selector('p.help-block', :content => 'some help')
   end
+
+  it 'text field should be rendered within control group' do
+    html = subject.text_field :name
+
+    html.should have_selector('.control-group label.control-label')
+    html.should have_selector('.control-group .controls input')
+  end
 end

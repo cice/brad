@@ -15,7 +15,10 @@ module BradViews::Forms
       snippets.help_inline content
     end
 
-    def labeled_control label_html, control_html
+    def labeled_control control, method, options = {}
+      label_html = label method
+      control_html = send "plain_#{control}", method, options
+
       label_html + control_html
     end
 
@@ -33,7 +36,7 @@ module BradViews::Forms
     alias_method :plain_submit, :submit
     def submit value = nil, options = {}
       options = options.to_tag_options
-      size = options.delete :size
+      size = options.delete(:size) || @_preset_options.try(:[], :size)
       options.merge! :class => "btn-#{size}" if size
 
       typed_button nil, value, options
@@ -53,6 +56,13 @@ module BradViews::Forms
       end
     end
 
+    def actions options = {}, &block
+      @_preset_options = options
+      @template.content_tag :div, :class => 'form-actions', &block
+    ensure
+      @_preset_options = nil
+    end
+
     BUTTON_TYPES.each do |button_type|
       class_eval <<-RUBY
         def #{button_type}_btn value = nil, options = {}
@@ -65,10 +75,7 @@ module BradViews::Forms
       class_eval <<-RUBY, __FILE__, __LINE__
         alias_method :plain_#{control}, :#{control}
         def labeled_#{control} method, options = {}
-          label_html = label method
-          control_html = plain_#{control} method, options
-
-          labeled_control label_html, control_html
+          labeled_control "#{control}", method, options
         end
         alias_method :#{control}, :labeled_#{control}
       RUBY
