@@ -25,7 +25,7 @@ require 'capybara/dsl'
 require 'rspec/core'
 require 'capybara/rspec/matchers'
 require 'capybara/rspec/features'
-
+require 'rspec/rails/mocks'
 require 'awesome_print'
 
 # Load support files
@@ -37,6 +37,7 @@ RSpec.configure do |config|
   require 'rspec/expectations'
   config.include RSpec::Matchers
   config.include Capybara::RSpecMatchers
+  config.include HelperSupport, :type => :helper
 
   # == Mock Framework
   config.mock_with :rspec

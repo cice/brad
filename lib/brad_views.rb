@@ -5,3 +5,5 @@ module BradViews
 
   I18N_SCOPE = Tools::I18nScope.new 'helpers'
 end
+
+require 'brad_views/helper'

@@ -7,7 +7,6 @@ module BradViews::Forms
 
     def labeled_control control, method, options = {}
       control_html = send "plain_#{control}", method, options
-
       state = 'error' if has_errors?(method)
 
       snippets.control_group nil, method, state do
