@@ -21,6 +21,12 @@ module BradViews::Forms
       form_for record, options, &block
     end
 
+    def inline_form_for record, options = {}, &block
+      options = form_options_merge_class options, 'form-inline'
+
+      form_for record, options, &block
+    end
+
     protected
     def form_options_merge_class options, clazz
       options = options.dup

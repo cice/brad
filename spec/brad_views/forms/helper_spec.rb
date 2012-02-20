@@ -29,4 +29,13 @@ describe BradViews::Forms::Helper, :type => :helper do
 
     html.should have_selector('form.form-vertical')
   end
+
+  it '#inline_form_for should render a form with .form-vertical' do
+    object = mock_model "User", :name => 'Max'
+
+    html = helper.inline_form_for object, :url => '' do |f|
+    end
+
+    html.should have_selector('form.form-inline')
+  end
 end
