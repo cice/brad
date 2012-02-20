@@ -8,12 +8,14 @@ module BradViews::Forms
     end
 
     def horizontal_form_for record, options = {}, &block
+      options = form_options_merge_class options, 'form-horizontal'
       options[:builder] = BradViews::Forms::Horizontal
 
       form_for record, options, &block
     end
 
     def search_form_for record, options = {}, &block
+      options = form_options_merge_class options, 'form-search'
       options[:builder] = BradViews::Forms::Search
 
       form_for record, options, &block
