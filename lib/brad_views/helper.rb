@@ -1,5 +1,7 @@
 require 'brad_views/tables/helper'
 require 'brad_views/forms/helper'
+
+require 'brad_views/buttons'
 require 'brad_views/icons'
 
 module BradViews
@@ -9,6 +11,7 @@ module BradViews
     included do
       include BradViews::Tables::Helper
       include BradViews::Forms::Helper
+      include BradViews::Buttons
       include BradViews::Icons
     end
   end
