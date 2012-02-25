@@ -9,5 +9,17 @@ module BradViews
 
       link_to *args, &block
     end
+
+    def btn_toolbar options = {}, &block
+      options = options.to_tag_options.merge! :class => 'btn-toolbar'
+
+      content_tag :div, options, &block
+    end
+
+    def btn_group options = {}, &block
+      options = options.to_tag_options.merge! :class => 'btn-group'
+
+      content_tag :div, options, &block
+    end
   end
 end
