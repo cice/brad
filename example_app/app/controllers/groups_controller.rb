@@ -1,3 +1,0 @@
-class GroupsController < ResourcesController
-
-end
