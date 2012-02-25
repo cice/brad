@@ -21,6 +21,18 @@ describe BradViews::Buttons, :type => :helper do
 
       html.should have_selector('a.btn.btn-primary[@href="google.de"]', :content => "Some Link")
     end
+
+    it 'specifying button size' do
+      html = helper.btn_to "Some Link", "google.de", :size => :large
+
+      html.should have_selector('a.btn.btn-large', :content => 'Some Link')
+    end
+
+    it 'disabling' do
+      html = helper.btn_to "Some Link", "google.de", :disabled => :true
+
+      html.should have_selector('a.btn.disabled', :content => 'Some Link')
+    end
   end
 
   it '#icon_btn_to' do

@@ -13,10 +13,22 @@ module BradViews
       html_options = args.extract_tag_options!
       html_options.merge! :class => 'btn'
       html_options.merge! :class => "btn-#{html_options[:type]}" if html_options[:type]
+      html_options.merge! :class => "btn-#{html_options[:size]}" if html_options[:size]
+      html_options.merge! :class => "disabled" if html_options[:disabled]
 
       args << html_options
 
       link_to *args, &block
+    end
+
+    BUTTON_TYPES.each do |type|
+      class_eval <<-RUBY, __FILE__, __LINE__
+        def #{type}_btn_to *args, &block
+          options = args.extract_tag_options!.merge! :type => "#{type}"
+
+          btn_to *(args << options), &block
+        end
+      RUBY
     end
 
     def icon_btn_to icon_type, *args
