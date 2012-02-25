@@ -16,13 +16,21 @@
   .well
     = btn_toolbar do
       = btn_group do
-        = btn_to "A", :demos, :type => :primary
-        = btn_to "B", :demos
+        = btn_to "A", :demos
+        = btn_to "B", :demos, :type => :primary
       = btn_group do
-        = btn_to "C", :demos
-        = btn_to "D", :demos, :type => :danger
-        = btn_to "E", :demos
-        = btn_to "F", :demos
+        = btn_to "C", :demos, :type => :info
+        = btn_to "D", :demos, :type => :success
+        = btn_to "E", :demos, :type => :warning
+        = btn_to "F", :demos, :type => :danger
+        = btn_to "G", :demos, :type => :inverse
+      = btn_group do
+        = btn_to :demos, :type => :inverse do
+          = icon :refresh, :class => 'icon-white'
+        = btn_to :demos do
+          = icon :play
+        = btn_to :demos, :type => :info do
+          = icon :edit
 
 %section
   %h1 Dropdown
