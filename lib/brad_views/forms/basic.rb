@@ -3,7 +3,7 @@ module BradViews::Forms
     attr_accessor :snippets
 
     LABELED_CONTROLS = field_helpers - %w(label check_box radio_button fields_for hidden_field)
-    BUTTON_TYPES = %w(primary info success warning danger inverse)
+    BUTTON_TYPES = BradViews::Buttons::BUTTON_TYPES
     ERROR_SEPARATOR = ', '
 
     def initialize *args, &block

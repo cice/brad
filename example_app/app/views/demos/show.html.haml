@@ -1,0 +1,47 @@
+%section
+  %h1 Buttons
+
+  .well
+    = btn_to "Default", :demos
+    = btn_to "Primary", :demos, :type => :primary
+    = btn_to "Info", :demos, :type => :info
+    = btn_to "Success", :demos, :type => :success
+    = btn_to "Warning", :demos, :type => :warning
+    = btn_to "Danger", :demos, :type => :danger
+    = btn_to "Inverse", :demos, :type => :inverse
+
+%section
+  %h1 Toolbar
+
+  .well
+    = btn_toolbar do
+      = btn_group do
+        = btn_to "A", :demos, :type => :primary
+        = btn_to "B", :demos
+      = btn_group do
+        = btn_to "C", :demos
+        = btn_to "D", :demos, :type => :danger
+        = btn_to "E", :demos
+        = btn_to "F", :demos
+
+%section
+  %h1 Dropdown
+
+  .well
+    = btn_toolbar do
+      = btn_dropdown "Action" do
+        %li
+          = link_to "Option 1", "#"
+        %li
+          = link_to "Option 2", "#"
+        %li
+          = link_to "Option 3", "#"
+
+      = btn_splitdown "Action", :demos do
+        %li
+          = link_to "Option 1", "#"
+        %li
+          = link_to "Option 2", "#"
+        %li.divider
+        %li
+          = link_to "Option 3", "#"
