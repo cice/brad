@@ -32,4 +32,18 @@ describe BradViews::NavBar, :type => :helper do
     html.should have_selector('li.active a')
   end
 
+  it 'nav_dropdown' do
+    html = helper.nav_dropdown 'Action' do
+    end
+
+    html.should have_selector('li.dropdown a.dropdown-toggle[@data-toggle="dropdown"]')
+    html.should have_selector('li.dropdown ul.dropdown-menu')
+  end
+
+  it 'drop_link_to' do
+    html = helper.drop_link_to 'Action', '#'
+
+    html.should have_selector('li a', :content => 'Action')
+  end
+
 end

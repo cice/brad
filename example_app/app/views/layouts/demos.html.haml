@@ -2,19 +2,20 @@
 %html
   %head
     %title Brad Demos
-    = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
 
   %body
     .container
-      .navbar
-        .navbar-inner
-          .container
-            = link_to 'Brad Demos', '#', :class => 'brand'
-
-            %ul.nav
-              %li
-                = link_to "Buttons", demo_path(:buttons)
+      = nav_bar do
+        = link_to 'Brad Demos', '#', :class => 'brand'
+        = nav_list do
+          = nav_link_to 'Buttons', demo_path(:buttons)
+          = nav_dropdown 'Example' do
+            = drop_link_to 'Option 1', '#'
+            = drop_divider
+            = drop_header "Further Options"
+            = drop_link_to 'Option 2', '#'
 
       = yield
