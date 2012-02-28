@@ -1,7 +1,6 @@
 module BradViews::Tables
-  class Builder
-    include BradViews::Tools::Builder
-    attr_reader :resource_name, :collection, :template, :options, :columns, :i18n_scope, :snippets
+  class Builder < BradViews::Tools::Builder
+    attr_reader :resource_name, :collection, :options, :columns, :i18n_scope
 
     def initialize resource_name, collection, template, options, block
       @resource_name, @collection, @template, @options = resource_name, collection, template, options
