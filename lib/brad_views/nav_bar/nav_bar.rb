@@ -17,10 +17,24 @@ module BradViews::NavBar
     end
 
     def dropdown label, &block
-      builder = Dropdown.new self
-      content = template.capture builder, &block
+      @_dropdown = true
+      content = template.capture &block
 
       snippets.dropdown label, content
+    ensure
+      @_dropdown = false
+    end
+
+    def header label, options = {}
+      snippets.header label, options
+    end
+
+    def divider
+      if @_dropdown
+        snippets.divider
+      else
+        snippets.divider_vertical
+      end
     end
 
     def to_html

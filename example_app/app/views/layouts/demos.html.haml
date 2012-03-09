@@ -8,14 +8,15 @@
 
   %body
     .container
-      = nav_bar do
+      = nav_bar do |n|
         = link_to 'Brad Demos', '#', :class => 'brand'
-        = nav_list do
-          = nav_link_to 'Buttons', demo_path(:buttons)
-          = nav_dropdown 'Example' do
-            = drop_link_to 'Option 1', '#'
-            = drop_divider
-            = drop_header "Further Options"
-            = drop_link_to 'Option 2', '#'
+        = n.list do
+          = n.link_to 'Buttons', demo_path(:buttons)
+          = n.divider
+          = n.dropdown 'Example' do
+            = n.link_to 'Option 1', '#'
+            = n.divider
+            = n.header "Some Header"
+            = n.link_to 'Option 2', '#'
 
       = yield
