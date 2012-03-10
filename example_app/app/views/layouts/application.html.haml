@@ -1,12 +1,18 @@
 !!!
 %html
   %head
-    %title BradSample
-    = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
+    %title Brad Demos
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
 
   %body
-
     .container
+      = nav_bar do |n|
+        = link_to 'Brad Demos', '#', :class => 'brand'
+        = n.list do
+          = n.link_to 'Buttons', demo_path(:buttons)
+          = n.divider
+          = n.link_to "Tables", users_path
+
       = yield

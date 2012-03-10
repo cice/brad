@@ -16,8 +16,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'mongoid'
-gem 'bson_ext'
+gem 'sqlite3'
 
 gem 'brad', :path => '../'
 

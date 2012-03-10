@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
-  helper BradViews::Helper
   inherit_resources
+
+  def create
+    create! do |succ, fail|
+      succ.html { redirect_to :users }
+    end
+  end
 end

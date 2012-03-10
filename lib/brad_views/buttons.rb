@@ -1,6 +1,7 @@
 module BradViews
   module Buttons
     BUTTON_TYPES = %w(primary info success warning danger inverse)
+    WHITE_ICON_TYPES = [:inverse, :primary, :info, :success, :warning, :danger]
 
     def icon type, *args
       options = args.extract_tag_options!.merge! :class => "icon-#{type}"
@@ -15,6 +16,7 @@ module BradViews
       html_options.merge! :class => "btn-#{html_options[:type]}" if html_options[:type]
       html_options.merge! :class => "btn-#{html_options[:size]}" if html_options[:size]
       html_options.merge! :class => "disabled" if html_options[:disabled]
+      html_options.merge! :class => 'active' if html_options[:active]
 
       args << html_options
 
@@ -37,7 +39,7 @@ module BradViews
       label, url = nil, label unless url
 
       icon_options = {}
-      icon_options[:class] = 'icon-white' if options[:type] == :inverse
+      icon_options[:class] = 'icon-white' if WHITE_ICON_TYPES.include?(options[:type])
       icon_html = icon icon_type, icon_options
 
       btn_to icon_html, url, options

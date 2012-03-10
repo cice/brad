@@ -33,12 +33,9 @@
         = btn_to "F", :demos, :type => :danger
         = btn_to "G", :demos, :type => :inverse
       = btn_group do
-        = btn_to :demos, :type => :inverse do
-          = icon :refresh, :class => 'icon-white'
-        = btn_to :demos do
-          = icon :play
-        = btn_to :demos, :type => :info do
-          = icon :edit
+        = icon_btn_to :refresh, :demos, :type => :inverse
+        = icon_btn_to :play, :demos
+        = icon_btn_to :pause, :demos, :active => true
 
 %section
   %h1 Dropdown
