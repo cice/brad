@@ -16,6 +16,10 @@ module BradViews::NavBar
       snippets.link_to body, url, options
     end
 
+    def icon_link_to icon_type, label, url, options = {}
+      snippets.icon_link_to icon_type, label, url, options
+    end
+
     def dropdown label, &block
       @_dropdown = true
       content = template.capture &block

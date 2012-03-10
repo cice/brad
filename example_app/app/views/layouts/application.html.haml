@@ -14,5 +14,6 @@
           = n.link_to 'Buttons', demo_path(:buttons)
           = n.divider
           = n.link_to "Tables", users_path
+          = n.icon_link_to :plus, "New User", [:new, :user]
 
       = yield

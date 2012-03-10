@@ -8,8 +8,9 @@ module BradViews::NavBar
       end
     end
 
-    def list items
-      content_tag :ul, items, :class => 'nav'
+    def list items, options = {}
+      tag_options = options.to_tag_options.merge! :class => 'nav'
+      content_tag :ul, items, tag_options
     end
 
     def divider_vertical
@@ -21,6 +22,12 @@ module BradViews::NavBar
       li_options[:class] = 'active' if template.current_page?(url)
 
       content_tag :li, template.link_to(body, url, options), li_options
+    end
+
+    def icon_link_to icon_type, label, url, options = {}
+      body = template.icon(icon_type, :class => 'icon-white') + ' ' + label
+
+      link_to body, url, options
     end
 
     def dropdown label, content

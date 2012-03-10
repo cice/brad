@@ -11,37 +11,38 @@
     - t.numeric :age
     - t.numeric :links do |user|
       = btn_group do
+        = icon_btn_to :search, user, :size => :mini
         = icon_btn_to :pencil, [:edit, user], :size => :mini
         = icon_btn_to :trash, user, :type => :danger, :size => :mini, :method => :delete, :confirm => 'Delete?'
 
-%section
-  %h1 Striped Tables
+-#%section
+  -#%h1 Striped Tables
 
-  = table_for @users, :striped => true do |t|
-    - t.string :firstname
-    - t.string :lastname
-    - t.numeric :age
+  -#= table_for @users, :striped => true do |t|
+    -#- t.string :firstname
+    -#- t.string :lastname
+    -#- t.numeric :age
 
-%section
-  %h1 Condensed Tables
+-#%section
+  -#%h1 Condensed Tables
 
-  = table_for @users, :condensed => true do |t|
-    - t.string :firstname
-    - t.string :lastname
-    - t.numeric :age
+  -#= table_for @users, :condensed => true do |t|
+    -#- t.string :firstname
+    -#- t.string :lastname
+    -#- t.numeric :age
 
-%section
-  %h1 Bordered Tables
+-#%section
+  -#%h1 Bordered Tables
 
-  = table_for @users, :bordered => true do |t|
-    - t.string :firstname
-    - t.string :lastname
-    - t.numeric :age
+  -#= table_for @users, :bordered => true do |t|
+    -#- t.string :firstname
+    -#- t.string :lastname
+    -#- t.numeric :age
 
-%section
-  %h1 Striped, Condensed, Bordered Tables
+-#%section
+  -#%h1 Striped, Condensed, Bordered Tables
 
-  = table_for @users, :bordered => true, :striped => true, :condensed => true do |t|
-    - t.string :firstname
-    - t.string :lastname
-    - t.numeric :age
+  -#= table_for @users, :bordered => true, :striped => true, :condensed => true do |t|
+    -#- t.string :firstname
+    -#- t.string :lastname
+    -#- t.numeric :age
