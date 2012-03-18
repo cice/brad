@@ -5,5 +5,11 @@ module BradViews::NavBar
 
       builder.to_html
     end
+
+    def nav_list &block
+      builder = BradViews::NavBar::NavBar.new(self, &block)
+
+      builder.to_nav_list
+    end
   end
 end

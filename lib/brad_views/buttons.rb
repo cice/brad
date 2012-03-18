@@ -18,6 +18,13 @@ module BradViews
       html_options.merge! :class => "disabled" if html_options[:disabled]
       html_options.merge! :class => 'active' if html_options[:active]
 
+      url_options = if block_given?
+        args.first
+      else
+        args.second
+      end
+      html_options.merge! :class => 'active' if current_page?(url_options)
+
       args << html_options
 
       link_to *args, &block
@@ -41,6 +48,7 @@ module BradViews
       icon_options = {}
       icon_options[:class] = 'icon-white' if WHITE_ICON_TYPES.include?(options[:type])
       icon_html = icon icon_type, icon_options
+      icon_html += ' ' + label if label
 
       btn_to icon_html, url, options
     end

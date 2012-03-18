@@ -30,6 +30,12 @@ module BradViews::Tables
       nil
     end
 
+    def buttons options = {}, &block
+      new_column [:buttons, options], :caption => '', :class => NUMERIC, &block
+
+      nil
+    end
+
     protected
     def helper name, *keys_and_options, &block
       klass = numeric_helper?(name) ? NUMERIC : ALPHA_NUMERIC

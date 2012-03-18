@@ -8,6 +8,10 @@ module BradViews::Tables
       @block = block
     end
 
+    def caption i18n_scope = nil
+      @options[:caption] || i18n_scope && i18n_scope.t(key)
+    end
+
     def key
       @key ||= keys.join '_'
     end

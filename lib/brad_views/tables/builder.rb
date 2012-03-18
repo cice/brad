@@ -50,14 +50,15 @@ module BradViews::Tables
     end
 
     def render_head_cell column
-      snippets.table_head_cell t(column.key), { :class => column.cell_class }
+      caption = column.caption(@i18n_scope)
+      snippets.table_head_cell caption, { :class => column.cell_class }
     end
 
-    protected
     def t key, options = {}
       @i18n_scope.t key, options
     end
 
+    protected
     def singular_resource_name
       @singular_resource_name ||= resource_name.to_s.singularize.to_sym
     end
