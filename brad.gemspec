@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.summary = "Bootstrap based RAD Framework for Rails 3.1"
   s.description = "Bootstrap based RAD Framework for Rails 3.1"
   s.authors     = ["Marian Theisen"]
-  s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.rdoc"]
+  s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.md"]
   s.version = Brad::VERSION
 
   s.add_development_dependency 'rspec-mocks', '~> 2.7.0'
