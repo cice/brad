@@ -37,6 +37,14 @@ module BradViews::Forms
       help errors_for method
     end
 
+    unless method_defined?(:button)
+      def button(value=nil, options={})
+        value, options = nil, value if value.is_a?(Hash)
+        value ||= submit_default_value
+        @template.button_tag(value, options)
+      end
+    end
+
     alias_method :plain_button, :button
     def typed_button type, value = nil, options = {}
       value, options = nil, value if value.is_a?(Hash)
@@ -56,7 +64,7 @@ module BradViews::Forms
 
       typed_button nil, value, options
     end
-    alias_method :button, :submit
+    #alias_method :button, :submit
 
     alias_method :plain_check_box, :check_box
     def check_box method, options = {}, checked_value = "1", unchecked_value = "0"
