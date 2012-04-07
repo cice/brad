@@ -5,6 +5,7 @@ module HelperSupport
     before do
       template.class_eval do
         define_method(:protect_against_forgery?) { false }
+        define_method(:current_page?) { |options| false }
       end
     end
 

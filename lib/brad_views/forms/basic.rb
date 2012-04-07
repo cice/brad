@@ -64,7 +64,7 @@ module BradViews::Forms
 
       typed_button nil, value, options
     end
-    #alias_method :button, :submit
+    alias_method :button, :submit
 
     alias_method :plain_check_box, :check_box
     def check_box method, options = {}, checked_value = "1", unchecked_value = "0"
