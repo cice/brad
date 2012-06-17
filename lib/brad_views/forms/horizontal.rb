@@ -5,11 +5,12 @@ module BradViews::Forms
       snippets.help_block content
     end
 
-    def labeled_control control, method, options = {}
-      control_html = send "plain_#{control}", method, options
+    def labeled_control control, method, options = {}, *args
+      control_html = send "plain_#{control}", method, options, *args
       state = 'error' if has_errors?(method)
 
-      snippets.control_group nil, method, state do
+      label = I18n.t method, scope: "activerecord.attributes.#{object.class.model_name.singular}"
+      snippets.control_group label, method, state do
         @template.concat control_html
         @template.concat error_help_for(method)
       end

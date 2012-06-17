@@ -1,7 +1,8 @@
 module BradViews::Tables
   class Schema < ActiveSupport::BasicObject
     NUMERIC_HELPERS = [ :number_to_currency, :number_to_human, :number_to_human_size, :number_to_percentag,
-      :number_to_phone, :number_with_delimiter, :number_with_precision, :localize, :l
+      :number_to_phone, :number_with_delimiter, :number_with_precision, :localize, :l,
+      :distance_of_time_in_words_to_now, :distance_of_time_in_words
     ]
 
     ALPHA_NUMERIC = 'alpha-numeric'

@@ -17,9 +17,9 @@ module BradViews::NavBar
       template.link_to body, url, class: 'brand'
     end
 
-    def list &block
+    def list options = {}, &block
       items = template.capture &block
-      snippets.list items
+      snippets.list items, options
     end
 
     def link_to body, url, options = {}
