@@ -17,7 +17,7 @@ module BradViews::Forms
     end
 
     def labeled_control control, method, options = {}, *args
-      label_html = label method
+      label_html = options[:label] || label(method)
       control_html = send "plain_#{control}", method, options, *args
 
       label_html + control_html + error_help_for(method)
