@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe BradViews::Tables::Builder do
-  let :resource_name do
-    'users'
+  class User
+    extend ActiveModel::Naming
   end
 
   let :template do
@@ -13,8 +13,12 @@ describe BradViews::Tables::Builder do
     {}
   end
 
+  let :extended_collection do
+    BradModels::Collection.new collection, User
+  end
+
   subject do
-    described_class.new resource_name, collection, template, options, block
+    described_class.new 'users', extended_collection, template, options, block
   end
 
   describe 'a simple table' do
@@ -48,7 +52,7 @@ describe BradViews::Tables::Builder do
     end
 
     it 'should render a table head' do
-      I18n.should_receive(:t).with("helpers.tables.users.firstname", {}).and_return "First Name"
+      I18n.should_receive(:t).with("helpers.label.user.firstname", {}).and_return "First Name"
 
       html = subject.render_head
       html.should have_selector('tr th.firstname.alpha-numeric', :content => 'First Name')

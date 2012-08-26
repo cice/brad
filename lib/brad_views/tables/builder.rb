@@ -7,7 +7,13 @@ module BradViews::Tables
 
       @snippets = Snippets.new template
       @columns = Schema.new(self, block).to_a
-      @i18n_scope = I18N_SCOPE.derive resource_name
+      i18n_key = if collection.respond_to?(:model_name)
+        collection.model_name.singular
+      else
+        resource_name
+      end
+
+      @i18n_scope = I18N_SCOPE[i18n_key]
     end
 
     def to_html

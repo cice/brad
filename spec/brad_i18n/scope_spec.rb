@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BradViews::Tools::I18nScope do
+describe BradI18n::Scope do
   it 'should simply scope t(ranslate) calls and delegate to parent' do
     scope = described_class.new 'helpers'
     I18n.should_receive(:t).with("helpers.form", {})

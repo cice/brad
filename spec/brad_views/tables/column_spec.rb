@@ -115,6 +115,5 @@ describe BradViews::Tables::Column do
         end
       end
     end
-
   end
 end

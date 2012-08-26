@@ -1,10 +1,14 @@
-module BradViews
-  autoload :Tools, 'brad_views/tools'
-  autoload :Tables, 'brad_views/tables'
-  autoload :Forms, 'brad_views/forms'
-  autoload :NavBar, 'brad_views/nav_bar'
+require 'brad_i18n'
 
-  I18N_SCOPE = Tools::I18nScope.new 'helpers'
+module BradViews
+  extend ActiveSupport::Autoload
+
+  autoload :Tools
+  autoload :Tables
+  autoload :Forms
+  autoload :NavBar
+
+  I18N_SCOPE = BradI18n::Scope.new 'helpers'
 end
 
 require 'brad_views/helper'

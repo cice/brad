@@ -1,8 +1,12 @@
-module BradViews::Tools
-  class I18nScope
+module BradI18n
+  class Scope
     def initialize scope, parent = I18n
       @scope = scope
       @parent = parent
+
+      @children = Hash.new do |children, scope|
+        children[scope.to_s] = self.class.new scope.to_s, self
+      end
     end
 
     def t key, options = {}
@@ -10,7 +14,8 @@ module BradViews::Tools
     end
 
     def derive scope
-      self.class.new scope, self
+      @children[scope.to_s]
     end
+    alias_method :[], :derive
   end
 end

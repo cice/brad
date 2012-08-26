@@ -10,7 +10,7 @@ describe BradViews::Forms::Horizontal do
   end
 
   let :object do
-    mock "User", :name => 'Max', :active => false, :errors => errors
+    mock_model "User", :name => 'Max', :active => false, :errors => errors
   end
 
   subject do

@@ -8,6 +8,7 @@ module BradViews
   module Helper
     extend ActiveSupport::Concern
 
+
     included do
       include BradViews::Tables::Helper
       include BradViews::Forms::Helper
