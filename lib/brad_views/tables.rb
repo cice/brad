@@ -5,6 +5,6 @@ module BradViews
     autoload :Schema, 'brad_views/tables/schema'
     autoload :Column, 'brad_views/tables/column'
 
-    I18N_SCOPE = BradViews::I18N_SCOPE[:label]
+    I18N_SCOPE = BradI18n::Scope.new(:activerecord)[:attributes]
   end
 end

@@ -52,7 +52,7 @@ describe BradViews::Tables::Builder do
     end
 
     it 'should render a table head' do
-      I18n.should_receive(:t).with("helpers.label.user.firstname", {}).and_return "First Name"
+      I18n.should_receive(:t).with("activerecord.attributes.user.firstname", {}).and_return "First Name"
 
       html = subject.render_head
       html.should have_selector('tr th.firstname.alpha-numeric', :content => 'First Name')
