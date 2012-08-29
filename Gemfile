@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gemspec
 
+gem "bootstrap-sass", :git => 'git://github.com/dszczyt/bootstrap-sass.git'
 gem "rails", "~> 3.2.1"
 gem "capybara", ">= 0.4.0"
 gem "mongoid"
