@@ -1,6 +1,7 @@
 module BradViews::Tables
   class Builder < BradViews::Tools::Builder
     attr_reader :resource_name, :collection, :options, :columns, :i18n_scope
+    attr_accessor :if_empty
 
     def initialize resource_name, collection, template, options, block
       @resource_name, @collection, @template, @options = resource_name, collection, template, options
@@ -23,9 +24,31 @@ module BradViews::Tables
       }
 
       snippets.table render_head, nil, options, html_options do
-        collection.each do |object|
-          template.concat render_row(object)
+        if collection.present?
+          collection.each do |object|
+            template.concat render_row(object)
+          end
+        else
+          template.concat render_empty_row
         end
+      end
+    end
+
+    def render_empty_row
+      snippets.table_row nil do
+        content = if Proc === @if_empty
+          template.capture &@if_empty
+        elsif @if_empty.present?
+          template.content_tag :em do
+            template.content_tag :small, @if_empty.to_s
+          end
+        else
+          template.content_tag :em do
+            template.content_tag :small, @i18n_scope.t(:no_entries)
+          end
+        end
+
+        template.concat snippets.table_cell(content, :colspan => columns.count)
       end
     end
 

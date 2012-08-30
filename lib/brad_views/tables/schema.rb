@@ -37,6 +37,10 @@ module BradViews::Tables
       nil
     end
 
+    def if_empty content = nil, &block
+      @builder.if_empty = content || block
+    end
+
     protected
     def helper name, *keys_and_options, &block
       klass = numeric_helper?(name) ? NUMERIC : ALPHA_NUMERIC
