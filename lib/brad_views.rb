@@ -1,9 +1,9 @@
 require 'brad_i18n'
+require 'brad_views/tools'
 
 module BradViews
   extend ActiveSupport::Autoload
 
-  autoload :Tools
   autoload :Tables
   autoload :Forms
   autoload :NavBar
