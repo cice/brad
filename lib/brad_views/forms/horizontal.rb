@@ -10,7 +10,8 @@ module BradViews::Forms
       state = 'error' if has_errors?(method)
 
       label = I18n.t method, scope: "activerecord.attributes.#{object.class.model_name.singular}"
-      snippets.control_group label, method, state do
+      label_html = label(method, label, :class => 'control-label')
+      snippets.control_group label_html, state do
         @template.concat control_html
         @template.concat error_help_for(method)
       end

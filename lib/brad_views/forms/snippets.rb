@@ -1,11 +1,11 @@
 module BradViews::Forms
   class Snippets < BradViews::Tools::Snippets
-    def control_group label, label_for = nil, state = nil, &block
+    def control_group label_html, state = nil, &block
       html_class = 'control-group'
       html_class += " #{state}" if state.present?
 
       div_tag :class => html_class do
-        concat template.label_tag(label_for, label, :class => 'control-label')
+        concat label_html
 
         div_tag!(:class => 'controls', &block)
       end

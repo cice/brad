@@ -13,12 +13,11 @@ describe BradViews::Forms::Snippets do
         template.concat "Some Controls"
       end
 
-      html.should have_selector(".control-group label.control-label", :content => "Some Label")
       html.should have_selector(".control-group .controls", :content => "Some Controls")
     end
 
     it 'should apply states' do
-      html = subject.control_group "Some Label", nil, :warning do
+      html = subject.control_group "Some Label", :warning do
         template.concat "Some Controls"
       end
 
