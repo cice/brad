@@ -1,3 +1,5 @@
+require 'action_view'
+
 module BradViews::Forms
   class Basic < ActionView::Helpers::FormBuilder
     attr_accessor :snippets

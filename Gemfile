@@ -11,3 +11,9 @@ group :autotest do
   gem "autotest-growl", :require => false
   gem "autotest-fsevent", :require => false
 end
+
+group :test do
+  gem 'rspec', '~> 2.11.0'
+  gem 'rspec-rails', '~> 2.11.0'
+  gem 'capybara', '~> 1.1.2'
+end

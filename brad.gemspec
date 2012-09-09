@@ -4,18 +4,11 @@ require "brad/version"
 
 Gem::Specification.new do |s|
   s.name = "brad"
+  s.version = Brad::VERSION
   s.summary = "Bootstrap based RAD Framework for Rails 3.2"
   s.description = "Bootstrap based RAD Framework for Rails 3.2"
   s.authors     = ["Marian Theisen"]
   s.files = Dir["{app,lib,config}/**/*"] + ["MIT-LICENSE", "Rakefile", "Gemfile", "README.md"]
-  s.version = Brad::VERSION
-
-  s.add_development_dependency 'rspec-mocks', '~> 2.11.0'
-  s.add_development_dependency 'rspec-rails', '~> 2.11.0'
-  s.add_development_dependency 'capybara'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'fabrication'
-  s.add_development_dependency 'yard'
 
   s.add_dependency 'actionpack', '>= 3.1.0'
   s.add_dependency 'kaminari', '~> 0.13.0'
