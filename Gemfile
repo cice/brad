@@ -4,7 +4,6 @@ gemspec
 
 group :development do
   gem 'awesome_print'
-  gem 'debugger'
 end
 
 group :autotest do
