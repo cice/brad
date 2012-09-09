@@ -11,7 +11,7 @@ module BradViews::Tables
       i18n_key = if collection.respond_to?(:model_name)
         collection.model_name.singular
       else
-        resource_name
+        resource_name.singularize
       end
 
       @i18n_scope = I18N_SCOPE[i18n_key]
