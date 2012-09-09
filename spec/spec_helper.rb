@@ -26,7 +26,6 @@ require 'rspec/core'
 require 'capybara/rspec/matchers'
 require 'capybara/rspec/features'
 require 'rspec/rails/mocks'
-require 'awesome_print'
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
