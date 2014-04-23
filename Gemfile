@@ -15,5 +15,6 @@ end
 group :test do
   gem 'rspec', '~> 2.11.0'
   gem 'rspec-rails', '~> 2.11.0'
+  gem 'activemodel'
   gem 'capybara', '~> 1.1.2'
 end

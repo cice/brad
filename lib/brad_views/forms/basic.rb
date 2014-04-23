@@ -4,11 +4,11 @@ module BradViews::Forms
   class Basic < ActionView::Helpers::FormBuilder
     attr_accessor :snippets
 
-    LABELED_CONTROLS = field_helpers - %w(label check_box radio_button fields_for hidden_field) + %w(date_select datetime_select collection_select)
+    LABELED_CONTROLS = field_helpers.map(&:to_s) - %w(label check_box radio_button fields_for hidden_field) + %w(date_select datetime_select collection_select)
     BUTTON_TYPES = BradViews::Buttons::BUTTON_TYPES
     ERROR_SEPARATOR = ', '
 
-    def initialize *args, &block
+    def initialize *args
       super
 
       @snippets = Snippets.new @template

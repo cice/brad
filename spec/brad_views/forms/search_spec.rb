@@ -10,7 +10,7 @@ describe BradViews::Forms::Search do
   end
 
   subject do
-    described_class.new "user", object, template, {}, proc{ |f| }
+    described_class.new "user", object, template, {}
   end
 
   it 'search field should have no label' do

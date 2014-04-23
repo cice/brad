@@ -14,7 +14,7 @@ describe BradViews::Forms::Horizontal do
   end
 
   subject do
-    described_class.new "user", object, template, {}, proc{ |f| }
+    described_class.new "user", object, template, {}
   end
 
   describe 'fields with errors' do
