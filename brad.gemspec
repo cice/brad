@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'actionpack', '>= 4.0.0'
   s.add_dependency 'kaminari', '~> 0.13.0'
-  s.add_dependency 'inherited_resources', '~> 1.4.1'
+  s.add_dependency 'inherited_resources', '~> 1.6.0'
 end
